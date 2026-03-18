@@ -1,78 +1,155 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>USSG — Vétérans Les Anciens</title>
-  <link rel="stylesheet" href="../css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USSG — Vétérans</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1B4FCC;--bl:#4D7EE8;--bd:#0F2E7A;--bp:#081A50;--k:#0a0a0a;--k2:#111;--k3:#1a1a1a;--w:#F4F4F0;--d:rgba(244,244,240,.42);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"Barlow",sans-serif;background:var(--k2);color:var(--w);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+header{position:sticky;top:0;z-index:200;background:var(--k);border-bottom:2px solid var(--blue);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.ls{width:32px;height:38px;}
+.ln{font-family:"Bebas Neue",sans-serif;font-size:1.45rem;letter-spacing:3px;}
+.ln em{font-style:normal;color:var(--bl);font-family:"Barlow",sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2px;margin-left:5px;}
+nav{display:flex;gap:2px;}
+nav a{padding:5px 9px;border-radius:3px;font-size:.72rem;font-weight:700;color:var(--d);transition:all .15s;white-space:nowrap;}
+nav a:hover{color:var(--w);background:var(--k3);}
+nav a.bk{background:var(--blue);color:var(--w);}
+@media(max-width:900px){nav{display:none;}}
+.ch{padding:40px 36px;background:var(--k);border-bottom:2px solid var(--blue);}
+.slbl{font-size:.62rem;font-weight:700;letter-spacing:5px;color:var(--bl);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.slbl::before{content:"";width:16px;height:2px;background:var(--bl);}
+.ch h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:3px;line-height:.9;}
+.ahl{color:var(--bl);}
+.ch p{margin-top:8px;color:var(--d);font-size:.86rem;}
+.gal{padding:36px;}
+.tabs{display:flex;border-bottom:2px solid #1e1e1e;margin-bottom:26px;}
+.tb{padding:10px 20px;background:none;border:none;color:var(--d);font-family:"Barlow",sans-serif;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s;}
+.tb.on{color:var(--w);border-bottom-color:var(--blue);}
+.up{border:2px dashed #1e1e1e;border-radius:7px;padding:36px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;margin-bottom:22px;position:relative;}
+.up input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.up:hover,.up.dov{border-color:var(--blue);background:rgba(27,79,204,.05);}
+.up.vid:hover,.up.vid.dov{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.02);}
+.upi{font-size:1.9rem;margin-bottom:7px;}
+.upt{color:var(--d);font-size:.83rem;line-height:1.6;}
+.upt strong{color:var(--bl);}
+.up.vid .upt strong{color:var(--w);}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;}
+.pc{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:var(--k3);border:1px solid #1e1e1e;cursor:pointer;}
+.pc img{width:100%;height:100%;object-fit:cover;transition:transform .32s;display:block;}
+.pc:hover img{transform:scale(1.06);}
+.pov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 55%);opacity:0;transition:opacity .2s;display:flex;align-items:flex-end;padding:10px;}
+.pc:hover .pov{opacity:1;}
+.pov span{font-size:.72rem;color:rgba(255,255,255,.8);}
+.pd{position:absolute;top:7px;right:7px;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.7);border:none;color:white;font-size:.7rem;cursor:pointer;opacity:0;display:flex;align-items:center;justify-content:center;transition:opacity .18s,background .18s;}
+.pc:hover .pd{opacity:1;}
+.pd:hover{background:#c53030;}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
+.vc{border-radius:8px;overflow:hidden;background:var(--k3);border:1px solid #1e1e1e;transition:border-color .2s;}
+.vc:hover{border-color:var(--blue);}
+.vc video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#000;}
+.vi{padding:10px 13px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #1e1e1e;}
+.vn{font-size:.8rem;font-weight:600;color:var(--d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.vd{background:none;border:none;color:var(--d);cursor:pointer;font-size:.85rem;flex-shrink:0;transition:color .15s;}
+.vd:hover{color:#e53e3e;}
+.em{text-align:center;padding:48px 20px;color:var(--d);font-size:.88rem;line-height:1.8;}
+#lb{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.97);align-items:center;justify-content:center;padding:16px;}
+#lb.open{display:flex;}
+#lb img{max-width:92vw;max-height:90vh;object-fit:contain;border-radius:4px;animation:lbi .2s ease;}
+@keyframes lbi{from{opacity:0;transform:scale(.93);}to{opacity:1;transform:scale(1);}}
+#lbc{position:fixed;top:18px;right:24px;background:none;border:none;font-size:2rem;color:var(--d);cursor:pointer;z-index:501;}
+#lbc:hover{color:var(--w);}
+footer{background:var(--k);border-top:2px solid var(--blue);padding:22px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.fl{display:flex;align-items:center;gap:9px;}
+.fs{width:26px;height:30px;}
+.fn{font-family:"Bebas Neue",sans-serif;font-size:1rem;letter-spacing:2px;color:rgba(244,244,240,.45);}
+footer p{color:var(--d);font-size:.73rem;}
+</style>
 </head>
 <body>
-
-<svg style="display:none">
-  <symbol id="shield" viewBox="0 0 100 115" fill="none">
-    <path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/>
-    <rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/>
-    <text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text>
-  </symbol>
-</svg>
-
+<svg style="display:none"><symbol id="sh" viewBox="0 0 100 115" fill="none"><path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/><rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/><text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text></symbol></svg>
 <header>
-  <div class="logo">
-    <svg class="logo-shield"><use href="#shield"/></svg>
-    <div class="logo-name">USSG <em>FC</em></div>
-  </div>
+  <div class="logo"><svg class="ls"><use href="#sh"/></svg><div class="ln">USSG <em>FC</em></div></div>
   <nav>
-    <a href="../index.html">Accueil</a>
-    <a href="../index.html#cats">Catégories</a>
+    <a href="index.html" class="bk">← Accueil</a>
+    <a href="index.html#cats">Catégories</a>
     <a href="seniors.html">Seniors</a>
     <a href="veterans.html">Vétérans</a>
   </nav>
 </header>
-
-<div class="cat-hero-bar">
-  <div class="sec-lbl">Les Anciens</div>
+<div class="ch">
+  <div class="slbl">Les Anciens</div>
   <h1><span class="ahl">Vétérans</span></h1>
   <p>Matchs · Entraînements · Moments du club</p>
 </div>
-
-<div class="gallery">
+<div class="gal">
   <div class="tabs">
-    <button class="tb active" data-tab="tab-photos">📸 Photos</button>
-    <button class="tb" data-tab="tab-videos">🎥 Vidéos</button>
+    <button class="tb on" onclick="st(this,'tp')">📸 Photos</button>
+    <button class="tb" onclick="st(this,'tv')">🎥 Vidéos</button>
   </div>
-  <div id="tab-photos" class="tab-panel">
-    <div class="upzone" id="photoZone">
-      <input type="file" id="photoInput" accept="image/*" multiple>
-      <div class="upico">🖼️</div>
-      <div class="uptxt"><strong>Cliquez ou glissez les photos ici</strong><br>JPG · PNG · WEBP</div>
-    </div>
-    <div class="pgrid" id="photoGrid"></div>
-    <div class="empty" id="photoEmpty">Aucune photo pour l'instant.</div>
+  <div id="tp">
+    <div class="up" id="pz"><input type="file" id="pi" accept="image/*" multiple><div class="upi">🖼️</div><div class="upt"><strong>Cliquez ou glissez les photos ici</strong><br>JPG · PNG · WEBP</div></div>
+    <div class="pg" id="pg"></div>
+    <div class="em" id="pe">Aucune photo pour l'instant.<br>Ajoutez les premières photos !</div>
   </div>
-  <div id="tab-videos" class="tab-panel" style="display:none;">
-    <div class="upzone video" id="videoZone">
-      <input type="file" id="videoInput" accept="video/*" multiple>
-      <div class="upico">🎬</div>
-      <div class="uptxt"><strong>Cliquez ou glissez les vidéos ici</strong><br>MP4 · MOV · AVI</div>
-    </div>
-    <div class="vgrid" id="videoGrid"></div>
-    <div class="empty" id="videoEmpty">Aucune vidéo pour l'instant.</div>
+  <div id="tv" style="display:none;">
+    <div class="up vid" id="vz"><input type="file" id="vi" accept="video/*" multiple><div class="upi">🎬</div><div class="upt"><strong>Cliquez ou glissez les vidéos ici</strong><br>MP4 · MOV · AVI</div></div>
+    <div class="vg" id="vg"></div>
+    <div class="em" id="ve">Aucune vidéo pour l'instant.</div>
   </div>
 </div>
-
 <footer>
-  <div class="fl">
-    <svg class="fshield"><use href="#shield"/></svg>
-    <span class="fn">USSG Football</span>
-  </div>
-  <p>&copy; 2026 USSG — Tous droits réservés</p>
+  <div class="fl"><svg class="fs"><use href="#sh"/></svg><span class="fn">USSG Football</span></div>
+  <p>&copy; 2026 USSG</p>
 </footer>
-
-<div id="lightbox">
-  <button id="lb-close" onclick="closeLightbox()">✕</button>
-  <img id="lb-img" src="" alt="">
-</div>
-
-<script src="../js/gallery.js"></script>
+<div id="lb"><button id="lbc" onclick="closeLb()">✕</button><img id="lbi" src="" alt=""></div>
+<script>
+const pg=document.getElementById("pg"),pe=document.getElementById("pe");
+const vg=document.getElementById("vg"),ve=document.getElementById("ve");
+function rp(){pe.style.display=pg.children.length===0?"block":"none";}
+function rv(){ve.style.display=vg.children.length===0?"block":"none";}
+function addP(f){
+  if(!f.type.startsWith("image/"))return;
+  const url=URL.createObjectURL(f);
+  const c=document.createElement("div");c.className="pc";
+  const img=document.createElement("img");img.src=url;img.loading="lazy";
+  img.onclick=()=>openLb(url);
+  const ov=document.createElement("div");ov.className="pov";ov.innerHTML="<span>🔍 Agrandir</span>";
+  const del=document.createElement("button");del.className="pd";del.textContent="✕";
+  del.onclick=e=>{e.stopPropagation();c.remove();URL.revokeObjectURL(url);rp();};
+  c.appendChild(img);c.appendChild(ov);c.appendChild(del);pg.appendChild(c);rp();
+}
+function addV(f){
+  if(!f.type.startsWith("video/"))return;
+  const url=URL.createObjectURL(f);
+  const c=document.createElement("div");c.className="vc";
+  const v=document.createElement("video");v.src=url;v.controls=true;v.preload="metadata";
+  const inf=document.createElement("div");inf.className="vi";
+  const nm=document.createElement("div");nm.className="vn";nm.textContent=f.name.replace(/\.[^/.]+$/,"");
+  const del=document.createElement("button");del.className="vd";del.textContent="🗑️";
+  del.onclick=()=>{c.remove();URL.revokeObjectURL(url);rv();};
+  inf.appendChild(nm);inf.appendChild(del);c.appendChild(v);c.appendChild(inf);vg.appendChild(c);rv();
+}
+document.getElementById("pi").onchange=e=>{[...e.target.files].forEach(addP);e.target.value="";};
+document.getElementById("vi").onchange=e=>{[...e.target.files].forEach(addV);e.target.value="";};
+function ds(zone,fn){
+  zone.addEventListener("dragover",e=>{e.preventDefault();zone.classList.add("dov");});
+  zone.addEventListener("dragleave",()=>zone.classList.remove("dov"));
+  zone.addEventListener("drop",e=>{e.preventDefault();zone.classList.remove("dov");[...e.dataTransfer.files].forEach(fn);});
+}
+ds(document.getElementById("pz"),addP);
+ds(document.getElementById("vz"),addV);
+function openLb(src){document.getElementById("lbi").src=src;document.getElementById("lb").classList.add("open");document.body.style.overflow="hidden";}
+function closeLb(){document.getElementById("lb").classList.remove("open");document.body.style.overflow="";}
+document.getElementById("lb").onclick=e=>{if(e.target===e.currentTarget)closeLb();};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLb();});
+function st(btn,id){document.querySelectorAll(".tb").forEach(b=>b.classList.remove("on"));btn.classList.add("on");["tp","tv"].forEach(t=>document.getElementById(t).style.display=t===id?"block":"none");}
+rp();rv();
+<\/script>
 </body>
 </html>

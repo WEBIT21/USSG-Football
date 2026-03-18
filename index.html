@@ -1,127 +1,150 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>USSG Football</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USSG Football</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1B4FCC;--bl:#4D7EE8;--bd:#0F2E7A;--bp:#081A50;--k:#0a0a0a;--k2:#111;--k3:#1a1a1a;--w:#F4F4F0;--d:rgba(244,244,240,.42);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--k);color:var(--w);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+header{position:sticky;top:0;z-index:200;background:var(--k);border-bottom:2px solid var(--blue);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.ls{width:32px;height:38px;}
+.ln{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:3px;}
+.ln em{font-style:normal;color:var(--bl);font-family:'Barlow',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2px;margin-left:5px;}
+nav{display:flex;gap:2px;}
+nav a{padding:5px 9px;border-radius:3px;font-size:.72rem;font-weight:700;color:var(--d);transition:all .15s;white-space:nowrap;}
+nav a:hover{color:var(--w);background:var(--k3);}
+nav a.on{color:var(--w);background:var(--bd);}
+@media(max-width:900px){nav{display:none;}}
+.hero{position:relative;height:360px;display:flex;flex-direction:column;justify-content:center;padding:0 36px;overflow:hidden;}
+.hbg{position:absolute;inset:0;background:linear-gradient(to right,rgba(8,26,80,.98) 45%,rgba(8,26,80,.6) 100%),var(--bp);}
+.hbg::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent 0,transparent 80px,rgba(27,79,204,.07) 80px,rgba(27,79,204,.07) 82px);}
+.hcircle{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:320px;height:320px;border:1.5px solid rgba(27,79,204,.2);border-radius:50%;}
+.hcircle::before{content:'';position:absolute;inset:36px;border:1px solid rgba(27,79,204,.12);border-radius:50%;}
+.hc{position:relative;z-index:1;max-width:440px;}
+.htag{font-size:.63rem;font-weight:700;letter-spacing:5px;color:var(--bl);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.htag::before{content:'';width:18px;height:2px;background:var(--bl);}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.2rem,8vw,6rem);line-height:.9;letter-spacing:3px;}
+.out{color:transparent;-webkit-text-stroke:2px var(--bl);}
+.hero p{margin-top:12px;font-size:.92rem;color:var(--d);line-height:1.6;}
+.hbtn{margin-top:24px;display:inline-block;padding:11px 26px;background:var(--blue);color:var(--w);border:none;border-radius:3px;font-family:'Barlow',sans-serif;font-weight:700;font-size:.83rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.hbtn:hover{background:var(--bl);}
+.caro{padding:44px 0;background:var(--k2);}
+.ch{padding:0 36px 20px;display:flex;align-items:flex-end;justify-content:space-between;}
+.clbl{font-size:.62rem;font-weight:700;letter-spacing:5px;color:var(--bl);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.clbl::before{content:'';width:16px;height:2px;background:var(--bl);}
+.ct{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:2px;}
+.cbs{display:flex;gap:7px;}
+.cbs button{width:34px;height:34px;border-radius:50%;background:var(--k3);border:1px solid #2a2a2a;color:var(--w);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .18s;}
+.cbs button:hover{background:var(--blue);}
+.cw{overflow:hidden;padding:0 36px;}
+.ctrack{display:flex;gap:12px;transition:transform .44s cubic-bezier(.25,.46,.45,.94);}
+.slide{flex-shrink:0;width:calc(33.33% - 8px);aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:var(--k3);border:1px solid #1e1e1e;position:relative;cursor:pointer;}
+.slide img{width:100%;height:100%;object-fit:cover;transition:transform .38s;display:block;}
+.slide:hover img{transform:scale(1.05);}
+.sph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.sov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 55%);opacity:0;transition:opacity .22s;display:flex;align-items:flex-end;padding:13px;}
+.slide:hover .sov{opacity:1;}
+.sov span{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:1px;text-transform:uppercase;}
+.dots{display:flex;justify-content:center;gap:5px;margin-top:18px;}
+.dot{width:6px;height:6px;border-radius:50%;background:#2a2a2a;cursor:pointer;transition:background .18s,width .2s;}
+.dot.on{background:var(--blue);width:16px;border-radius:3px;}
+@media(max-width:640px){.slide{width:calc(85% - 6px);}}
+.cats{padding:44px 36px;background:var(--k);}
+.slbl{font-size:.62rem;font-weight:700;letter-spacing:5px;color:var(--bl);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.slbl::before{content:'';width:16px;height:2px;background:var(--bl);}
+.stit{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.7rem,4vw,2.8rem);letter-spacing:2px;margin-bottom:24px;}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+@media(max-width:560px){.cgrid{grid-template-columns:repeat(2,1fr);}}
+.cc{position:relative;border-radius:6px;overflow:hidden;background:var(--k3);aspect-ratio:2/1;border:1px solid #1e1e1e;cursor:pointer;display:block;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.cc:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(27,79,204,.22);border-color:var(--blue);}
+.cc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue);z-index:3;transform:scaleX(0);transform-origin:left;transition:transform .25s;}
+.cc:hover::before{transform:scaleX(1);}
+.cbg{position:absolute;inset:0;background:linear-gradient(140deg,var(--bp),var(--k3));}
+.cbg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,79,204,.17) 1px,transparent 1px);background-size:15px 15px;}
+.ci{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:14px 16px;}
+.cage{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;line-height:1;}
+.cname{font-size:.62rem;font-weight:700;color:var(--bl);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+footer{background:var(--k);border-top:2px solid var(--blue);padding:22px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.fl{display:flex;align-items:center;gap:9px;}
+.fs{width:26px;height:30px;}
+.fn{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;color:rgba(244,244,240,.45);}
+footer p{color:var(--d);font-size:.73rem;}
+</style>
 </head>
 <body>
-
-<!-- LOGO SVG partagé -->
-<svg style="display:none">
-  <symbol id="shield" viewBox="0 0 100 115" fill="none">
-    <path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/>
-    <rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/>
-    <text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text>
-  </symbol>
-</svg>
-
-<!-- HEADER -->
+<svg style="display:none"><symbol id="sh" viewBox="0 0 100 115" fill="none"><path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/><rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/><text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text></symbol></svg>
 <header>
-  <div class="logo">
-    <svg class="logo-shield"><use href="#shield"/></svg>
-    <div class="logo-name">USSG <em>FC</em></div>
-  </div>
+  <div class="logo"><svg class="ls"><use href="#sh"/></svg><div class="ln">USSG <em>FC</em></div></div>
   <nav>
-    <a href="index.html" class="active">Accueil</a>
+    <a href="index.html" class="on">Accueil</a>
     <a href="#cats">Catégories</a>
-    <a href="categories/seniors.html">Seniors</a>
-    <a href="categories/veterans.html">Vétérans</a>
+    <a href="seniors.html">Seniors</a>
+    <a href="veterans.html">Vétérans</a>
   </nav>
 </header>
-
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-circle"></div>
-  <div class="hero-content">
+  <div class="hbg"></div><div class="hcircle"></div>
+  <div class="hc">
     <div class="htag">Saison 2025-2026</div>
     <h1>USSG<br><span class="out">Football</span></h1>
     <p>Photos et vidéos de toutes les catégories du club.</p>
     <a href="#cats" class="hbtn">Voir les catégories →</a>
   </div>
 </div>
-
-<!-- CARROUSEL -->
 <div class="caro">
-  <div class="caro-head">
-    <div>
-      <div class="caro-lbl">Dernières photos</div>
-      <div class="caro-title">À la une</div>
-    </div>
-    <div class="caro-btns">
-      <button id="caro-prev">←</button>
-      <button id="caro-next">→</button>
-    </div>
+  <div class="ch">
+    <div><div class="clbl">Dernières photos</div><div class="ct">À la une</div></div>
+    <div class="cbs"><button id="cp">←</button><button id="cn">→</button></div>
   </div>
-  <div class="caro-wrap">
-    <div class="caro-track" id="caro-track">
-      <!--
-        Pour ajouter de vraies photos dans le carrousel,
-        remplacer chaque bloc par :
-        <div class="slide">
-          <img src="assets/photos/photo.jpg" alt="Description">
-          <div class="slide-over"><span>Match U12 · Mars 2026</span></div>
-        </div>
-
-        Exemple actuel avec placeholders :
-      -->
-      <div class="slide">
-        <div class="slide-placeholder" style="background:linear-gradient(135deg,#081A50,#0a1a3a)">⚽</div>
-        <div class="slide-over"><span>Match U12 · Mars 2026</span></div>
-      </div>
-      <div class="slide">
-        <div class="slide-placeholder" style="background:linear-gradient(135deg,#091535,#0F2E7A)">🥅</div>
-        <div class="slide-over"><span>Entraînement U14</span></div>
-      </div>
-      <div class="slide">
-        <div class="slide-placeholder" style="background:linear-gradient(135deg,#0F2E7A,#081A50)">🏃</div>
-        <div class="slide-over"><span>Match Seniors · Jan. 2026</span></div>
-      </div>
-      <div class="slide">
-        <div class="slide-placeholder" style="background:linear-gradient(135deg,#050e28,#081A50)">🏆</div>
-        <div class="slide-over"><span>Tournoi U8 · Déc. 2025</span></div>
-      </div>
-      <div class="slide">
-        <div class="slide-placeholder" style="background:linear-gradient(135deg,#081A50,#070f24)">⚽</div>
-        <div class="slide-over"><span>Entraînement U16</span></div>
-      </div>
-      <div class="slide">
-        <div class="slide-placeholder" style="background:linear-gradient(135deg,#0c1e45,#0F2E7A)">🎽</div>
-        <div class="slide-over"><span>Match Vétérans</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="dots" id="caro-dots"></div>
+  <div class="cw"><div class="ctrack" id="tr">
+    <div class="slide"><div class="sph" style="background:linear-gradient(135deg,#081A50,#0a1a3a)">⚽</div><div class="sov"><span>Match U12 · Mars 2026</span></div></div>
+    <div class="slide"><div class="sph" style="background:linear-gradient(135deg,#091535,#0F2E7A)">🥅</div><div class="sov"><span>Entraînement U14</span></div></div>
+    <div class="slide"><div class="sph" style="background:linear-gradient(135deg,#0F2E7A,#081A50)">🏃</div><div class="sov"><span>Match Seniors</span></div></div>
+    <div class="slide"><div class="sph" style="background:linear-gradient(135deg,#050e28,#081A50)">🏆</div><div class="sov"><span>Tournoi U8</span></div></div>
+    <div class="slide"><div class="sph" style="background:linear-gradient(135deg,#081A50,#070f24)">⚽</div><div class="sov"><span>Entraînement U16</span></div></div>
+    <div class="slide"><div class="sph" style="background:linear-gradient(135deg,#0c1e45,#0F2E7A)">🎽</div><div class="sov"><span>Match Vétérans</span></div></div>
+  </div></div>
+  <div class="dots" id="dots"></div>
 </div>
-
-<!-- CATÉGORIES -->
 <div class="cats" id="cats">
-  <div class="sec-lbl">Le club</div>
-  <div class="sec-title">Catégories</div>
+  <div class="slbl">Le club</div><div class="stit">Catégories</div>
   <div class="cgrid">
-    <a href="categories/u6u7.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U6-U7</div><div class="cname">Baby Foot</div></div></a>
-    <a href="categories/u8u9.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U8-U9</div><div class="cname">École de Foot</div></div></a>
-    <a href="categories/u10u11.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U10-U11</div><div class="cname">École de Foot</div></div></a>
-    <a href="categories/u12u13.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U12-U13</div><div class="cname">Poussins</div></div></a>
-    <a href="categories/u14u15.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U14-U15</div><div class="cname">Benjamins</div></div></a>
-    <a href="categories/u16u17.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U16-U17</div><div class="cname">Minimes</div></div></a>
-    <a href="categories/u18u19.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U18-U19</div><div class="cname">Cadets</div></div></a>
-    <a href="categories/seniors.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">Seniors</div><div class="cname">Équipe 1ère</div></div></a>
-    <a href="categories/veterans.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">Vétérans</div><div class="cname">Les Anciens</div></div></a>
+    <a href="u6u7.html"    class="cc"><div class="cbg"></div><div class="ci"><div class="cage">U6-U7</div><div class="cname">Baby Foot</div></div></a>
+    <a href="u8u9.html"    class="cc"><div class="cbg"></div><div class="ci"><div class="cage">U8-U9</div><div class="cname">École de Foot</div></div></a>
+    <a href="u10u11.html"  class="cc"><div class="cbg"></div><div class="ci"><div class="cage">U10-U11</div><div class="cname">École de Foot</div></div></a>
+    <a href="u12u13.html"  class="cc"><div class="cbg"></div><div class="ci"><div class="cage">U12-U13</div><div class="cname">Poussins</div></div></a>
+    <a href="u14u15.html"  class="cc"><div class="cbg"></div><div class="ci"><div class="cage">U14-U15</div><div class="cname">Benjamins</div></div></a>
+    <a href="u16u17.html"  class="cc"><div class="cbg"></div><div class="ci"><div class="cage">U16-U17</div><div class="cname">Minimes</div></div></a>
+    <a href="u18u19.html"  class="cc"><div class="cbg"></div><div class="ci"><div class="cage">U18-U19</div><div class="cname">Cadets</div></div></a>
+    <a href="seniors.html" class="cc"><div class="cbg"></div><div class="ci"><div class="cage">Seniors</div><div class="cname">Équipe 1ère</div></div></a>
+    <a href="veterans.html"class="cc"><div class="cbg"></div><div class="ci"><div class="cage">Vétérans</div><div class="cname">Les Anciens</div></div></a>
   </div>
 </div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="fl">
-    <svg class="fshield"><use href="#shield"/></svg>
-    <span class="fn">USSG Football</span>
-  </div>
+  <div class="fl"><svg class="fs"><use href="#sh"/></svg><span class="fn">USSG Football</span></div>
   <p>&copy; 2026 USSG — Tous droits réservés</p>
 </footer>
-
-<script src="js/carousel.js"></script>
+<script>
+let c=0,ti;
+const sl=document.querySelectorAll('.slide'),tr=document.getElementById('tr'),dt=document.getElementById('dots');
+const vis=()=>window.innerWidth<=640?1:3;
+sl.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.onclick=()=>go(i);dt.appendChild(d);});
+function go(i){const m=sl.length-vis();c=Math.max(0,Math.min(i,m));tr.style.transform=`translateX(-${c*(sl[0].offsetWidth+12)}px)`;dt.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===c));}
+function nx(){go(c>=sl.length-vis()?0:c+1);}
+function pv(){go(c<=0?sl.length-vis():c-1);}
+document.getElementById('cp').onclick=()=>{clearInterval(ti);pv();ti=setInterval(nx,3500);};
+document.getElementById('cn').onclick=()=>{clearInterval(ti);nx();ti=setInterval(nx,3500);};
+let tx=0;
+tr.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+tr.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){clearInterval(ti);dx<0?nx():pv();ti=setInterval(nx,3500);}});
+window.addEventListener('resize',()=>go(c));
+ti=setInterval(nx,3500);
+</script>
 </body>
 </html>
