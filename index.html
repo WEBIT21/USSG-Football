@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USSG Football</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- LOGO SVG partagé -->
+<svg style="display:none">
+  <symbol id="shield" viewBox="0 0 100 115" fill="none">
+    <path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/>
+    <rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/>
+    <text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text>
+  </symbol>
+</svg>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <svg class="logo-shield"><use href="#shield"/></svg>
+    <div class="logo-name">USSG <em>FC</em></div>
+  </div>
+  <nav>
+    <a href="index.html" class="active">Accueil</a>
+    <a href="#cats">Catégories</a>
+    <a href="categories/seniors.html">Seniors</a>
+    <a href="categories/veterans.html">Vétérans</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-content">
+    <div class="htag">Saison 2025-2026</div>
+    <h1>USSG<br><span class="out">Football</span></h1>
+    <p>Photos et vidéos de toutes les catégories du club.</p>
+    <a href="#cats" class="hbtn">Voir les catégories →</a>
+  </div>
+</div>
+
+<!-- CARROUSEL -->
+<div class="caro">
+  <div class="caro-head">
+    <div>
+      <div class="caro-lbl">Dernières photos</div>
+      <div class="caro-title">À la une</div>
+    </div>
+    <div class="caro-btns">
+      <button id="caro-prev">←</button>
+      <button id="caro-next">→</button>
+    </div>
+  </div>
+  <div class="caro-wrap">
+    <div class="caro-track" id="caro-track">
+      <!--
+        Pour ajouter de vraies photos dans le carrousel,
+        remplacer chaque bloc par :
+        <div class="slide">
+          <img src="assets/photos/photo.jpg" alt="Description">
+          <div class="slide-over"><span>Match U12 · Mars 2026</span></div>
+        </div>
+
+        Exemple actuel avec placeholders :
+      -->
+      <div class="slide">
+        <div class="slide-placeholder" style="background:linear-gradient(135deg,#081A50,#0a1a3a)">⚽</div>
+        <div class="slide-over"><span>Match U12 · Mars 2026</span></div>
+      </div>
+      <div class="slide">
+        <div class="slide-placeholder" style="background:linear-gradient(135deg,#091535,#0F2E7A)">🥅</div>
+        <div class="slide-over"><span>Entraînement U14</span></div>
+      </div>
+      <div class="slide">
+        <div class="slide-placeholder" style="background:linear-gradient(135deg,#0F2E7A,#081A50)">🏃</div>
+        <div class="slide-over"><span>Match Seniors · Jan. 2026</span></div>
+      </div>
+      <div class="slide">
+        <div class="slide-placeholder" style="background:linear-gradient(135deg,#050e28,#081A50)">🏆</div>
+        <div class="slide-over"><span>Tournoi U8 · Déc. 2025</span></div>
+      </div>
+      <div class="slide">
+        <div class="slide-placeholder" style="background:linear-gradient(135deg,#081A50,#070f24)">⚽</div>
+        <div class="slide-over"><span>Entraînement U16</span></div>
+      </div>
+      <div class="slide">
+        <div class="slide-placeholder" style="background:linear-gradient(135deg,#0c1e45,#0F2E7A)">🎽</div>
+        <div class="slide-over"><span>Match Vétérans</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="dots" id="caro-dots"></div>
+</div>
+
+<!-- CATÉGORIES -->
+<div class="cats" id="cats">
+  <div class="sec-lbl">Le club</div>
+  <div class="sec-title">Catégories</div>
+  <div class="cgrid">
+    <a href="categories/u6u7.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U6-U7</div><div class="cname">Baby Foot</div></div></a>
+    <a href="categories/u8u9.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U8-U9</div><div class="cname">École de Foot</div></div></a>
+    <a href="categories/u10u11.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U10-U11</div><div class="cname">École de Foot</div></div></a>
+    <a href="categories/u12u13.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U12-U13</div><div class="cname">Poussins</div></div></a>
+    <a href="categories/u14u15.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U14-U15</div><div class="cname">Benjamins</div></div></a>
+    <a href="categories/u16u17.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U16-U17</div><div class="cname">Minimes</div></div></a>
+    <a href="categories/u18u19.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">U18-U19</div><div class="cname">Cadets</div></div></a>
+    <a href="categories/seniors.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">Seniors</div><div class="cname">Équipe 1ère</div></div></a>
+    <a href="categories/veterans.html" class="ccard"><div class="cbg"></div><div class="cinfo"><div class="cage">Vétérans</div><div class="cname">Les Anciens</div></div></a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">
+    <svg class="fshield"><use href="#shield"/></svg>
+    <span class="fn">USSG Football</span>
+  </div>
+  <p>&copy; 2026 USSG — Tous droits réservés</p>
+</footer>
+
+<script src="js/carousel.js"></script>
+</body>
+</html>
