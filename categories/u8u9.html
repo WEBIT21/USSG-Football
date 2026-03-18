@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USSG — U8-U9 École de Football</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<svg style="display:none">
+  <symbol id="shield" viewBox="0 0 100 115" fill="none">
+    <path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/>
+    <rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/>
+    <text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text>
+  </symbol>
+</svg>
+
+<header>
+  <div class="logo">
+    <svg class="logo-shield"><use href="#shield"/></svg>
+    <div class="logo-name">USSG <em>FC</em></div>
+  </div>
+  <nav>
+    <a href="../index.html">Accueil</a>
+    <a href="../index.html#cats">Catégories</a>
+    <a href="seniors.html">Seniors</a>
+    <a href="veterans.html">Vétérans</a>
+  </nav>
+</header>
+
+<div class="cat-hero-bar">
+  <div class="sec-lbl">École de Football</div>
+  <h1><span class="ahl">U8-U9</span></h1>
+  <p>Matchs · Entraînements · Moments du club</p>
+</div>
+
+<div class="gallery">
+  <div class="tabs">
+    <button class="tb active" data-tab="tab-photos">📸 Photos</button>
+    <button class="tb" data-tab="tab-videos">🎥 Vidéos</button>
+  </div>
+  <div id="tab-photos" class="tab-panel">
+    <div class="upzone" id="photoZone">
+      <input type="file" id="photoInput" accept="image/*" multiple>
+      <div class="upico">🖼️</div>
+      <div class="uptxt"><strong>Cliquez ou glissez les photos ici</strong><br>JPG · PNG · WEBP</div>
+    </div>
+    <div class="pgrid" id="photoGrid"></div>
+    <div class="empty" id="photoEmpty">Aucune photo pour l'instant.</div>
+  </div>
+  <div id="tab-videos" class="tab-panel" style="display:none;">
+    <div class="upzone video" id="videoZone">
+      <input type="file" id="videoInput" accept="video/*" multiple>
+      <div class="upico">🎬</div>
+      <div class="uptxt"><strong>Cliquez ou glissez les vidéos ici</strong><br>MP4 · MOV · AVI</div>
+    </div>
+    <div class="vgrid" id="videoGrid"></div>
+    <div class="empty" id="videoEmpty">Aucune vidéo pour l'instant.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="fl">
+    <svg class="fshield"><use href="#shield"/></svg>
+    <span class="fn">USSG Football</span>
+  </div>
+  <p>&copy; 2026 USSG — Tous droits réservés</p>
+</footer>
+
+<div id="lightbox">
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script src="../js/gallery.js"></script>
+</body>
+</html>
