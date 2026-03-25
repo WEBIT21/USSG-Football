@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="USSG Football — U12-U13 Poussins. Photos et vidéos.">
+<meta name="theme-color" content="#0a0a0a">
 <title>USSG — U12-U13</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -20,13 +22,31 @@ nav{display:flex;gap:2px;}
 nav a{padding:5px 9px;border-radius:3px;font-size:.72rem;font-weight:700;color:var(--d);transition:all .15s;white-space:nowrap;}
 nav a:hover{color:var(--w);background:var(--k3);}
 nav a.bk{background:var(--blue);color:var(--w);}
-@media(max-width:900px){nav{display:none;}}
+.hmenu{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:201;}
+.hmenu span{display:block;width:22px;height:2px;background:var(--w);border-radius:2px;transition:all .25s;}
+.hmenu.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hmenu.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hmenu.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){nav{display:none;}.hmenu{display:flex;}}
+.mnav{display:none;position:fixed;inset:0;z-index:199;background:rgba(5,8,20,.97);flex-direction:column;align-items:center;justify-content:center;gap:6px;backdrop-filter:blur(8px);}
+.mnav.open{display:flex;}
+.mnav a{font-family:"Bebas Neue",sans-serif;font-size:2.4rem;letter-spacing:4px;color:var(--w);padding:10px 24px;border-radius:4px;transition:color .15s,background .15s;width:220px;text-align:center;}
+.mnav a:hover{color:var(--bl);background:rgba(27,79,204,.1);}
+.mnav-close{position:absolute;top:22px;right:24px;background:none;border:none;font-size:1.6rem;color:var(--d);cursor:pointer;line-height:1;}
+.catnav{background:var(--k);border-bottom:1px solid #1e1e1e;padding:0 24px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.catnav::-webkit-scrollbar{display:none;}
+.cn-item{padding:11px 13px;font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--d);white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;}
+.cn-item:hover{color:var(--w);}
+.cn-item.on{color:var(--bl);border-bottom-color:var(--blue);}
 .ch{padding:40px 36px;background:var(--k);border-bottom:2px solid var(--blue);}
 .slbl{font-size:.62rem;font-weight:700;letter-spacing:5px;color:var(--bl);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:6px;}
 .slbl::before{content:"";width:16px;height:2px;background:var(--bl);}
 .ch h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:3px;line-height:.9;}
 .ahl{color:var(--bl);}
 .ch p{margin-top:8px;color:var(--d);font-size:.86rem;}
+.chnav{margin-top:18px;display:flex;gap:10px;}
+.chnav a{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--d);padding:7px 14px;border:1px solid #2a2a2a;border-radius:3px;transition:color .15s,border-color .15s,background .15s;}
+.chnav a:hover{color:var(--w);border-color:rgba(244,244,240,.3);background:var(--k3);}
 .gal{padding:36px;}
 .tabs{display:flex;border-bottom:2px solid #1e1e1e;margin-bottom:26px;}
 .tb{padding:10px 20px;background:none;border:none;color:var(--d);font-family:"Barlow",sans-serif;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s;}
@@ -62,17 +82,28 @@ nav a.bk{background:var(--blue);color:var(--w);}
 #lb.open{display:flex;}
 #lb img{max-width:92vw;max-height:90vh;object-fit:contain;border-radius:4px;animation:lbi .2s ease;}
 @keyframes lbi{from{opacity:0;transform:scale(.93);}to{opacity:1;transform:scale(1);}}
-#lbc{position:fixed;top:18px;right:24px;background:none;border:none;font-size:2rem;color:var(--d);cursor:pointer;z-index:501;}
+#lbc{position:fixed;top:18px;right:24px;background:none;border:none;font-size:2rem;color:var(--d);cursor:pointer;z-index:501;transition:color .15s;}
 #lbc:hover{color:var(--w);}
+#top{position:fixed;bottom:28px;right:28px;width:42px;height:42px;background:var(--blue);border:none;border-radius:50%;color:var(--w);font-size:1.1rem;cursor:pointer;z-index:300;opacity:0;pointer-events:none;transition:opacity .25s,background .18s;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(27,79,204,.4);}
+#top.vis{opacity:1;pointer-events:auto;}
+#top:hover{background:var(--bl);}
 footer{background:var(--k);border-top:2px solid var(--blue);padding:22px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
 .fl{display:flex;align-items:center;gap:9px;}
 .fs{width:26px;height:30px;}
 .fn{font-family:"Bebas Neue",sans-serif;font-size:1rem;letter-spacing:2px;color:rgba(244,244,240,.45);}
 footer p{color:var(--d);font-size:.73rem;}
+@media(max-width:600px){.ch,.gal{padding-left:18px;padding-right:18px;}footer{padding:16px 18px;}}
 </style>
 </head>
 <body>
 <svg style="display:none"><symbol id="sh" viewBox="0 0 100 115" fill="none"><path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/><rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/><text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text></symbol></svg>
+<div class="mnav" id="mnav">
+  <button class="mnav-close" onclick="closeMob()">✕</button>
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="index.html#cats" onclick="closeMob()">Catégories</a>
+  <a href="seniors.html" onclick="closeMob()">Seniors</a>
+  <a href="veterans.html" onclick="closeMob()">Vétérans</a>
+</div>
 <header>
   <div class="logo"><svg class="ls"><use href="#sh"/></svg><div class="ln">USSG <em>FC</em></div></div>
   <nav>
@@ -81,11 +112,27 @@ footer p{color:var(--d);font-size:.73rem;}
     <a href="seniors.html">Seniors</a>
     <a href="veterans.html">Vétérans</a>
   </nav>
+  <button class="hmenu" id="hmenu" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
+<div class="catnav">
+  <a href="u6u7.html" class="cn-item">U6-U7</a>
+  <a href="u8u9.html" class="cn-item">U8-U9</a>
+  <a href="u10u11.html" class="cn-item">U10-U11</a>
+  <a href="u12u13.html" class="cn-item on">U12-U13</a>
+  <a href="u14u15.html" class="cn-item">U14-U15</a>
+  <a href="u16u17.html" class="cn-item">U16-U17</a>
+  <a href="u18u19.html" class="cn-item">U18-U19</a>
+  <a href="seniors.html" class="cn-item">Seniors</a>
+  <a href="veterans.html" class="cn-item">Vétérans</a>
+</div>
 <div class="ch">
   <div class="slbl">Poussins</div>
   <h1><span class="ahl">U12-U13</span></h1>
   <p>Matchs · Entraînements · Moments du club</p>
+  <div class="chnav">
+    <a href="u10u11.html">← U10-U11</a>
+    <a href="u14u15.html">U14-U15 →</a>
+  </div>
 </div>
 <div class="gal">
   <div class="tabs">
@@ -105,51 +152,30 @@ footer p{color:var(--d);font-size:.73rem;}
 </div>
 <footer>
   <div class="fl"><svg class="fs"><use href="#sh"/></svg><span class="fn">USSG Football</span></div>
-  <p>&copy; 2026 USSG</p>
+  <p>&copy; 2026 USSG — Tous droits réservés</p>
 </footer>
 <div id="lb"><button id="lbc" onclick="closeLb()">✕</button><img id="lbi" src="" alt=""></div>
+<button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Haut de page">↑</button>
 <script>
 const pg=document.getElementById("pg"),pe=document.getElementById("pe");
 const vg=document.getElementById("vg"),ve=document.getElementById("ve");
 function rp(){pe.style.display=pg.children.length===0?"block":"none";}
 function rv(){ve.style.display=vg.children.length===0?"block":"none";}
-function addP(f){
-  if(!f.type.startsWith("image/"))return;
-  const url=URL.createObjectURL(f);
-  const c=document.createElement("div");c.className="pc";
-  const img=document.createElement("img");img.src=url;img.loading="lazy";
-  img.onclick=()=>openLb(url);
-  const ov=document.createElement("div");ov.className="pov";ov.innerHTML="<span>🔍 Agrandir</span>";
-  const del=document.createElement("button");del.className="pd";del.textContent="✕";
-  del.onclick=e=>{e.stopPropagation();c.remove();URL.revokeObjectURL(url);rp();};
-  c.appendChild(img);c.appendChild(ov);c.appendChild(del);pg.appendChild(c);rp();
-}
-function addV(f){
-  if(!f.type.startsWith("video/"))return;
-  const url=URL.createObjectURL(f);
-  const c=document.createElement("div");c.className="vc";
-  const v=document.createElement("video");v.src=url;v.controls=true;v.preload="metadata";
-  const inf=document.createElement("div");inf.className="vi";
-  const nm=document.createElement("div");nm.className="vn";nm.textContent=f.name.replace(/\.[^/.]+$/,"");
-  const del=document.createElement("button");del.className="vd";del.textContent="🗑️";
-  del.onclick=()=>{c.remove();URL.revokeObjectURL(url);rv();};
-  inf.appendChild(nm);inf.appendChild(del);c.appendChild(v);c.appendChild(inf);vg.appendChild(c);rv();
-}
+function addP(f){if(!f.type.startsWith("image/"))return;const url=URL.createObjectURL(f);const c=document.createElement("div");c.className="pc";const img=document.createElement("img");img.src=url;img.loading="lazy";img.onclick=()=>openLb(url);const ov=document.createElement("div");ov.className="pov";ov.innerHTML="<span>\u{1F50D} Agrandir</span>";const del=document.createElement("button");del.className="pd";del.textContent="\u2715";del.onclick=e=>{e.stopPropagation();c.remove();URL.revokeObjectURL(url);rp();};c.appendChild(img);c.appendChild(ov);c.appendChild(del);pg.appendChild(c);rp();}
+function addV(f){if(!f.type.startsWith("video/"))return;const url=URL.createObjectURL(f);const c=document.createElement("div");c.className="vc";const v=document.createElement("video");v.src=url;v.controls=true;v.preload="metadata";const inf=document.createElement("div");inf.className="vi";const nm=document.createElement("div");nm.className="vn";nm.textContent=f.name.replace(/\.[^/.]+$/,"");const del=document.createElement("button");del.className="vd";del.textContent="\u{1F5D1}\uFE0F";del.onclick=()=>{c.remove();URL.revokeObjectURL(url);rv();};inf.appendChild(nm);inf.appendChild(del);c.appendChild(v);c.appendChild(inf);vg.appendChild(c);rv();}
 document.getElementById("pi").onchange=e=>{[...e.target.files].forEach(addP);e.target.value="";};
 document.getElementById("vi").onchange=e=>{[...e.target.files].forEach(addV);e.target.value="";};
-function ds(zone,fn){
-  zone.addEventListener("dragover",e=>{e.preventDefault();zone.classList.add("dov");});
-  zone.addEventListener("dragleave",()=>zone.classList.remove("dov"));
-  zone.addEventListener("drop",e=>{e.preventDefault();zone.classList.remove("dov");[...e.dataTransfer.files].forEach(fn);});
-}
-ds(document.getElementById("pz"),addP);
-ds(document.getElementById("vz"),addV);
+function ds(zone,fn){zone.addEventListener("dragover",e=>{e.preventDefault();zone.classList.add("dov");});zone.addEventListener("dragleave",()=>zone.classList.remove("dov"));zone.addEventListener("drop",e=>{e.preventDefault();zone.classList.remove("dov");[...e.dataTransfer.files].forEach(fn);});}
+ds(document.getElementById("pz"),addP);ds(document.getElementById("vz"),addV);
 function openLb(src){document.getElementById("lbi").src=src;document.getElementById("lb").classList.add("open");document.body.style.overflow="hidden";}
 function closeLb(){document.getElementById("lb").classList.remove("open");document.body.style.overflow="";}
 document.getElementById("lb").onclick=e=>{if(e.target===e.currentTarget)closeLb();};
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLb();});
 function st(btn,id){document.querySelectorAll(".tb").forEach(b=>b.classList.remove("on"));btn.classList.add("on");["tp","tv"].forEach(t=>document.getElementById(t).style.display=t===id?"block":"none");}
+function toggleMob(){const m=document.getElementById("mnav"),b=document.getElementById("hmenu");m.classList.toggle("open");b.classList.toggle("open");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
+function closeMob(){document.getElementById("mnav").classList.remove("open");document.getElementById("hmenu").classList.remove("open");document.body.style.overflow="";}
+window.addEventListener("scroll",()=>{document.getElementById("top").classList.toggle("vis",window.scrollY>300);},{passive:true});
 rp();rv();
-<\/script>
+</script>
 </body>
 </html>
