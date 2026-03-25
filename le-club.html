@@ -124,6 +124,27 @@ footer{background:var(--k);border-top:2px solid var(--blue);padding:22px 36px;di
 .flinks a:hover{color:var(--bl);}
 footer p{color:var(--d);font-size:.73rem;}
 @media(max-width:600px){.ph,.sec{padding-left:18px;padding-right:18px;}footer{padding:16px 18px;}.flinks{display:none;}}
+
+/* ─── LIENS LÉGAUX (pied de page) ─── */
+.flegal{width:100%;border-top:1px solid #1e1e1e;padding-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+.flegal a{font-size:.68rem;color:var(--d);transition:color .15s;}
+.flegal a:hover{color:var(--bl);}
+
+/* ─── CARTE CITATION PRÉSIDENT ─── */
+.pres-quote-card{flex:1;min-width:260px;background:var(--k3);border:1px solid rgba(27,79,204,.2);border-left:3px solid var(--blue);border-radius:8px;padding:28px 28px 22px;}
+.pres-text-name{font-family:"Bebas Neue",sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--bl);margin-bottom:3px;}
+/* Grande guillemet décorative */
+.pres-quote-mark{font-family:"Georgia",serif;font-size:5rem;line-height:.7;color:var(--blue);opacity:.45;margin-bottom:8px;display:block;}
+.pres-quote-card p{font-size:.9rem;line-height:1.75;color:var(--d);margin-bottom:10px;}
+/* Ligne de signature en bas de la carte */
+.pres-signature{margin-top:18px;padding-top:14px;border-top:1px solid rgba(244,244,240,.08);}
+.pres-sig-name{font-weight:700;font-size:.9rem;color:var(--w);}
+.pres-sig-title{font-size:.72rem;color:var(--bl);margin-top:2px;}
+/* ─── PLACEHOLDER CLIQUABLE SI PHOTO ABSENT ─── */
+/* S'affiche si assets/photos/staff/president.jpg est introuvable */
+.pres-upload-zone{display:none;width:130px;height:130px;border-radius:50%;background:var(--bp);border:3px dashed rgba(27,79,204,.6);margin:0 auto;align-items:center;justify-content:center;flex-direction:column;cursor:pointer;text-align:center;padding:10px;gap:6px;transition:border-color .2s,background .2s;}
+.pres-upload-zone.show{display:flex;}
+.pres-upload-zone:hover{border-color:var(--bl);background:rgba(27,79,204,.12);}
 </style>
 </head>
 <body>
@@ -173,23 +194,35 @@ footer p{color:var(--d);font-size:.73rem;}
   <div class="slbl">Message</div>
   <div class="stit">Mot du Président</div>
   <div class="president rev">
-    <!-- Photo du président — fichier : assets/photos/staff/president.jpg -->
+    <!-- ─── Photo du président — remplacez assets/photos/staff/president.jpg ─── -->
     <div class="pres-photo-col">
+      <!-- La photo s'affiche si le fichier existe, sinon le placeholder cliquable apparaît -->
       <img src="assets/photos/staff/president.jpg" alt="Président USSG" class="pres-img"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <!-- Icône de remplacement si la photo est absente -->
-      <div style="display:none;width:130px;height:130px;border-radius:50%;background:var(--bp);border:3px solid var(--blue);margin:0 auto;align-items:center;justify-content:center;font-size:2.8rem;">👤</div>
+           onerror="this.style.display='none';this.nextElementSibling.classList.add('show')">
+      <!-- Placeholder : cliquez pour prévisualiser une photo (sans upload serveur) -->
+      <label class="pres-upload-zone" for="pres-photo-input">
+        <span style="font-size:1.8rem;">📷</span>
+        <span style="font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--bl);line-height:1.4;">Cliquez pour<br>ajouter une photo</span>
+        <input type="file" id="pres-photo-input" accept="image/*" style="display:none" onchange="previewPresPhoto(this)">
+      </label>
       <div class="pres-name-tag">Prénom NOM</div>
       <div class="pres-title-tag">Président du club</div>
     </div>
-    <div class="pres-text">
-      <h3>Prénom NOM</h3>
+    <!-- ─── Carte citation — modifiez le texte ci-dessous ─── -->
+    <div class="pres-quote-card">
+      <div class="pres-text-name">Prénom NOM</div>
       <div class="pres-role">Président du club</div>
+      <!-- Guillemet décorative -->
+      <div class="pres-quote-mark">&ldquo;</div>
       <!-- Modifiez ce message -->
       <p>Chers amis du football, chers supporters,</p>
       <p>Au nom de l'ensemble du bureau et des bénévoles du club, je suis fier de vous accueillir sur le site de l'USSG Football. Notre club est ancré dans notre territoire et œuvre chaque jour pour le développement du football, de nos plus jeunes licenciés jusqu'à nos vétérans.</p>
       <p>Cette saison encore, nous nous engageons à offrir les meilleures conditions de pratique à tous nos joueurs. Bonne saison à toutes et à tous !</p>
-      <p style="margin-top:10px;color:var(--w);font-weight:700;">Prénom NOM<br><span style="font-size:.8rem;color:var(--d);font-weight:400;">Président, USSG Football</span></p>
+      <!-- Signature -->
+      <div class="pres-signature">
+        <div class="pres-sig-name">Prénom NOM</div>
+        <div class="pres-sig-title">Président, USSG Football</div>
+      </div>
     </div>
   </div>
 </div>
@@ -344,6 +377,12 @@ footer p{color:var(--d);font-size:.73rem;}
     <a href="seniors.html">Seniors</a>
   </div>
   <p>&copy; 2026 USSG — Tous droits réservés</p>
+  <!-- ─── Liens légaux — modifiez si nécessaire ─── -->
+  <div class="flegal">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgu.html">CGU</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
 </footer>
 
 <button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Haut de page">↑</button>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="USSG Football — Conditions Générales d'Utilisation.">
+<meta name="theme-color" content="#0a0a0a">
+<title>USSG — CGU</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1B4FCC;--bl:#4D7EE8;--bd:#0F2E7A;--bp:#0d1a4a;--k:#0a0f1e;--k2:#0d1428;--k3:#121e36;--w:#F4F4F0;--d:rgba(244,244,240,.42);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"Barlow",sans-serif;background:repeating-linear-gradient(-55deg,transparent 0,transparent 80px,rgba(27,79,204,.04) 80px,rgba(27,79,204,.04) 82px),linear-gradient(160deg,#0a0f1e 0%,#0f1a3e 100%) fixed;background-attachment:fixed;color:var(--w);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+header{position:sticky;top:0;z-index:200;background:var(--k);border-bottom:2px solid var(--blue);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.ls{width:32px;height:38px;}
+.ln{font-family:"Bebas Neue",sans-serif;font-size:1.45rem;letter-spacing:3px;}
+.ln em{font-style:normal;color:var(--bl);font-family:"Barlow",sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2px;margin-left:5px;}
+nav{display:flex;gap:2px;}
+nav a{padding:5px 9px;border-radius:3px;font-size:.72rem;font-weight:700;color:var(--d);transition:all .15s;white-space:nowrap;}
+nav a:hover{color:var(--w);background:var(--k3);}
+nav a.bk{background:var(--blue);color:var(--w);}
+.hmenu{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:201;}
+.hmenu span{display:block;width:22px;height:2px;background:var(--w);border-radius:2px;transition:all .25s;}
+.hmenu.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hmenu.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hmenu.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){nav{display:none;}.hmenu{display:flex;}}
+.mnav{display:none;position:fixed;inset:0;z-index:199;background:rgba(5,8,20,.97);flex-direction:column;align-items:center;justify-content:center;gap:6px;backdrop-filter:blur(8px);}
+.mnav.open{display:flex;}
+.mnav a{font-family:"Bebas Neue",sans-serif;font-size:2.4rem;letter-spacing:4px;color:var(--w);padding:10px 24px;border-radius:4px;transition:color .15s,background .15s;width:220px;text-align:center;}
+.mnav a:hover{color:var(--bl);background:rgba(27,79,204,.1);}
+.mnav-close{position:absolute;top:22px;right:24px;background:none;border:none;font-size:1.6rem;color:var(--d);cursor:pointer;line-height:1;}
+.socials{display:flex;gap:4px;align-items:center;}
+.soc-link{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;color:var(--d);transition:color .15s,background .15s;}
+.soc-link:hover{color:var(--bl);background:rgba(27,79,204,.12);}
+@media(max-width:900px){.socials{display:none;}}
+.ph{padding:40px 36px;background:var(--k);border-bottom:2px solid var(--blue);}
+.slbl{font-size:.62rem;font-weight:700;letter-spacing:5px;color:var(--bl);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.slbl::before{content:"";width:16px;height:2px;background:var(--bl);}
+.ph h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:3px;line-height:.9;}
+.ahl{color:var(--bl);}
+.ph p{margin-top:8px;color:var(--d);font-size:.86rem;}
+/* ─── CONTENU LÉGAL ─── */
+.legal{padding:48px 36px;max-width:800px;}
+.legal h2{font-family:"Bebas Neue",sans-serif;font-size:1.5rem;letter-spacing:2px;color:var(--bl);margin:32px 0 10px;}
+.legal h2:first-child{margin-top:0;}
+.legal p{font-size:.9rem;line-height:1.8;color:var(--d);margin-bottom:10px;}
+.legal strong{color:var(--w);}
+.legal a{color:var(--bl);transition:color .15s;}
+.legal a:hover{color:var(--w);}
+footer{background:var(--k);border-top:2px solid var(--blue);padding:22px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.fl{display:flex;align-items:center;gap:9px;}
+.fs{width:26px;height:30px;}
+.fn{font-family:"Bebas Neue",sans-serif;font-size:1rem;letter-spacing:2px;color:rgba(244,244,240,.45);}
+.flinks{display:flex;gap:16px;}
+.flinks a{font-size:.7rem;font-weight:600;color:var(--d);transition:color .15s;}
+.flinks a:hover{color:var(--bl);}
+footer p{color:var(--d);font-size:.73rem;}
+.flegal{width:100%;border-top:1px solid #1e1e1e;padding-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+.flegal a{font-size:.68rem;color:var(--d);transition:color .15s;}
+.flegal a:hover{color:var(--bl);}
+@media(max-width:600px){.ph,.legal{padding-left:18px;padding-right:18px;}footer{padding:16px 18px;}.flinks{display:none;}}
+</style>
+</head>
+<body>
+<svg style="display:none"><symbol id="sh" viewBox="0 0 100 115" fill="none"><path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/><rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/><text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text></symbol></svg>
+<div class="mnav" id="mnav">
+  <button class="mnav-close" onclick="closeMob()">✕</button>
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="le-club.html" onclick="closeMob()">Le Club</a>
+  <a href="actualites.html" onclick="closeMob()">Actualités</a>
+  <a href="index.html#cats" onclick="closeMob()">Catégories</a>
+  <a href="seniors.html" onclick="closeMob()">Seniors</a>
+  <a href="veterans.html" onclick="closeMob()">Vétérans</a>
+</div>
+<header>
+  <a href="index.html" class="logo"><svg class="ls"><use href="#sh"/></svg><div class="ln">USSG <em>FC</em></div></a>
+  <nav>
+    <a href="index.html" class="bk">← Accueil</a>
+    <a href="le-club.html">Le Club</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="index.html#cats">Catégories</a>
+    <a href="seniors.html">Seniors</a>
+    <a href="veterans.html">Vétérans</a>
+  </nav>
+  <div class="socials">
+    <a href="https://facebook.com/ussg.foot" target="_blank" rel="noopener" aria-label="Facebook USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://instagram.com/ussg60730" target="_blank" rel="noopener" aria-label="Instagram USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+  <button class="hmenu" id="hmenu" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="ph">
+  <div class="slbl">Légal</div>
+  <h1>Conditions Générales<br><span class="ahl">d'Utilisation</span></h1>
+  <p>Conditions d'utilisation du site web de l'USSG Football.</p>
+</div>
+
+<!-- ═══ CONTENU CGU ════════════════════════════════════════ -->
+<!-- Modifiez les informations ci-dessous si nécessaire -->
+<div class="legal">
+
+  <h2>Objet</h2>
+  <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du site web de l'<strong>USSG Football</strong>. En accédant à ce site, vous acceptez sans réserve les présentes conditions.</p>
+
+  <h2>Accès au site</h2>
+  <p>Le site est accessible gratuitement à tout utilisateur disposant d'un accès à Internet. Les frais de connexion (accès Internet) sont à la charge de l'utilisateur.</p>
+  <p>L'USSG Football se réserve le droit de modifier, suspendre ou interrompre l'accès au site à tout moment et sans préavis, notamment pour des raisons de maintenance.</p>
+
+  <h2>Contenu du site</h2>
+  <p>Ce site a pour objet de présenter le club USSG Football : ses équipes, ses actualités, ses photos et vidéos. Les informations publiées sont fournies à titre indicatif et peuvent être modifiées à tout moment.</p>
+  <p>Les photos et vidéos publiées représentent les membres et licenciés du club. Toute reproduction sans autorisation est interdite (voir les <a href="mentions-legales.html">mentions légales</a>).</p>
+
+  <h2>Comportement de l'utilisateur</h2>
+  <p>L'utilisateur s'engage à utiliser ce site dans le respect des lois et règlements en vigueur et à ne pas porter atteinte aux droits de tiers ou à l'image du club.</p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>L'ensemble des contenus de ce site (textes, images, vidéos, logo) sont protégés par le droit de la propriété intellectuelle et restent la propriété de l'USSG Football ou de leurs auteurs.</p>
+
+  <h2>Données personnelles</h2>
+  <p>Ce site ne collecte aucune donnée personnelle via des formulaires, cookies de tracking ou analytics. Pour plus de détails, consultez la <a href="politique-confidentialite.html">politique de confidentialité</a>.</p>
+
+  <h2>Liens externes</h2>
+  <p>Ce site peut contenir des liens vers des sites tiers (Facebook, Instagram). L'USSG Football n'est pas responsable du contenu de ces sites externes.</p>
+
+  <h2>Modification des CGU</h2>
+  <p>L'USSG Football se réserve le droit de modifier les présentes CGU à tout moment. Les modifications prennent effet dès leur publication sur le site.</p>
+
+  <h2>Droit applicable</h2>
+  <p>Les présentes CGU sont soumises au droit français. Tout litige relatif à leur interprétation relève de la compétence des tribunaux français.</p>
+
+  <h2>Contact</h2>
+  <p>Pour toute question, contactez-nous à : <a href="mailto:ussg60730@gmail.com">ussg60730@gmail.com</a></p>
+
+</div>
+
+<footer>
+  <div class="fl"><svg class="fs"><use href="#sh"/></svg><span class="fn">USSG Football</span></div>
+  <div class="flinks">
+    <a href="le-club.html">Le Club</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="index.html#cats">Catégories</a>
+    <a href="seniors.html">Seniors</a>
+  </div>
+  <p>&copy; 2026 USSG — Tous droits réservés</p>
+  <div class="flegal">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgu.html">CGU</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script>
+function toggleMob(){const m=document.getElementById("mnav"),b=document.getElementById("hmenu");m.classList.toggle("open");b.classList.toggle("open");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
+function closeMob(){document.getElementById("mnav").classList.remove("open");document.getElementById("hmenu").classList.remove("open");document.body.style.overflow="";}
+</script>
+</body>
+</html>

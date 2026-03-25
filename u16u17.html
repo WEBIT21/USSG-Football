@@ -100,6 +100,11 @@ footer p{color:var(--d);font-size:.73rem;}
 .soc-link{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;color:var(--d);transition:color .15s,background .15s;}
 .soc-link:hover{color:var(--bl);background:rgba(27,79,204,.12);}
 @media(max-width:900px){.socials{display:none;}}
+
+/* ─── LIENS LÉGAUX (pied de page) ─── */
+.flegal{width:100%;border-top:1px solid #1e1e1e;padding-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+.flegal a{font-size:.68rem;color:var(--d);transition:color .15s;}
+.flegal a:hover{color:var(--bl);}
 </style>
 </head>
 <body>
@@ -170,6 +175,12 @@ footer p{color:var(--d);font-size:.73rem;}
 <footer>
   <div class="fl"><svg class="fs"><use href="#sh"/></svg><span class="fn">USSG Football</span></div>
   <p>&copy; 2026 USSG — Tous droits réservés</p>
+  <!-- ─── Liens légaux — modifiez si nécessaire ─── -->
+  <div class="flegal">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgu.html">CGU</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
 </footer>
 <div id="lb"><button id="lbc" onclick="closeLb()">✕</button><img id="lbi" src="" alt=""></div>
 <button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Haut de page">↑</button>

@@ -105,6 +105,11 @@ footer{background:var(--k);border-top:2px solid var(--blue);padding:22px 36px;di
 .flinks a:hover{color:var(--bl);}
 footer p{color:var(--d);font-size:.73rem;}
 @media(max-width:600px){.ph,.sec{padding-left:18px;padding-right:18px;}footer{padding:16px 18px;}.flinks{display:none;}}
+
+/* ─── LIENS LÉGAUX (pied de page) ─── */
+.flegal{width:100%;border-top:1px solid #1e1e1e;padding-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+.flegal a{font-size:.68rem;color:var(--d);transition:color .15s;}
+.flegal a:hover{color:var(--bl);}
 </style>
 </head>
 <body>
@@ -301,6 +306,12 @@ footer p{color:var(--d);font-size:.73rem;}
     <a href="seniors.html">Seniors</a>
   </div>
   <p>&copy; 2026 USSG — Tous droits réservés</p>
+  <!-- ─── Liens légaux — modifiez si nécessaire ─── -->
+  <div class="flegal">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgu.html">CGU</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
 </footer>
 
 <button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Haut de page">↑</button>

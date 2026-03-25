@@ -86,8 +86,12 @@ nav a.on{color:var(--w);background:var(--bd);}
 .slide:hover .sov{opacity:1;}
 .sov span{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:1px;text-transform:uppercase;}
 .dots{display:flex;justify-content:center;gap:5px;margin-top:18px;}
-.dot{width:6px;height:6px;border-radius:50%;background:#2a2a2a;cursor:pointer;transition:background .18s,width .2s;}
-.dot.on{background:var(--blue);width:16px;border-radius:3px;}
+/* ─── Pastilles de progression animées ─── */
+.dot{width:8px;height:8px;border-radius:50%;background:#2a3050;cursor:pointer;transition:background .18s,width .2s;position:relative;overflow:hidden;}
+.dot.on{background:var(--k3);width:28px;border-radius:4px;}
+/* Barre bleue qui avance en 3s dans la pastille active */
+.dot.on::after{content:'';position:absolute;top:0;left:0;height:100%;width:0;background:var(--blue);border-radius:4px;animation:dp 3s linear forwards;}
+@keyframes dp{from{width:0}to{width:100%}}
 @media(max-width:640px){.slide{width:calc(85% - 6px);}}
 
 /* ─── CATEGORIES ─── */
@@ -101,7 +105,10 @@ nav a.on{color:var(--w);background:var(--bd);}
 .cc:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(27,79,204,.22);border-color:var(--blue);}
 .cc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue);z-index:3;transform:scaleX(0);transform-origin:left;transition:transform .25s;}
 .cc:hover::before{transform:scaleX(1);}
-.cbg{position:absolute;inset:0;background:linear-gradient(140deg,var(--bp),var(--k3));}
+.cbg{position:absolute;inset:0;background:linear-gradient(140deg,var(--bp),var(--k3));overflow:hidden;}
+/* ─── Photo de fond de chaque carte catégorie ─── */
+.cbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;transition:opacity .3s;display:block;}
+.cc:hover .cbg img{opacity:.5;}
 .cbg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,79,204,.17) 1px,transparent 1px);background-size:15px 15px;}
 .ci{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:14px 16px;}
 .cage{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;line-height:1;}
@@ -153,6 +160,11 @@ footer p{color:var(--d);font-size:.73rem;}
 .plogo{width:56px;height:56px;margin:0 auto 10px;border-radius:8px;background:var(--bp);border:1px solid rgba(27,79,204,.3);display:flex;align-items:center;justify-content:center;font-family:"Bebas Neue",sans-serif;font-size:.9rem;color:var(--bl);letter-spacing:1px;}
 .pn{font-weight:700;font-size:.88rem;color:var(--w);margin-bottom:3px;}
 .ps{font-size:.72rem;color:var(--d);}
+
+/* ─── LIENS LÉGAUX (pied de page) ─── */
+.flegal{width:100%;border-top:1px solid #1e1e1e;padding-top:10px;display:flex;gap:14px;flex-wrap:wrap;}
+.flegal a{font-size:.68rem;color:var(--d);transition:color .15s;}
+.flegal a:hover{color:var(--bl);}
 </style>
 </head>
 <body>
@@ -220,17 +232,26 @@ footer p{color:var(--d);font-size:.73rem;}
   </div>
   <div class="cw"><div class="ctrack" id="tr">
 
-    <!-- ═══ PHOTOS VIE DU CLUB — modifiez src="..." pour changer les photos ═══ -->
+    <!-- ═══ PHOTOS VIE DU CLUB — toutes les photos du dossier assets/photos/vie-du-club/ ═══ -->
+    <!-- ➕ POUR AJOUTER UNE PHOTO : copiez ce bloc et changez src et le texte de légende -->
     <div class="slide"><img src="assets/photos/vie-du-club/Crep1.jpg" alt="Vie du club" loading="lazy"><div class="sov"><span>Vie du club</span></div></div>
     <div class="slide"><img src="assets/photos/vie-du-club/Crep2.jpg" alt="Vie du club" loading="lazy"><div class="sov"><span>Vie du club</span></div></div>
     <div class="slide"><img src="assets/photos/vie-du-club/Crep3.jpg" alt="Vie du club" loading="lazy"><div class="sov"><span>Vie du club</span></div></div>
     <div class="slide"><img src="assets/photos/vie-du-club/Crep4.jpg" alt="Vie du club" loading="lazy"><div class="sov"><span>Vie du club</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/Coach&amp;joueurs.jpeg" alt="Entraîneurs &amp; joueurs" loading="lazy"><div class="sov"><span>Entraîneurs &amp; joueurs</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/Bonne-Année.jpg" alt="Bonne Année" loading="lazy"><div class="sov"><span>Bonne Année</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/U6-U7_1.JPEG" alt="U6-U7" loading="lazy"><div class="sov"><span>U6-U7</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/U6-U7_2.JPEG" alt="U6-U7" loading="lazy"><div class="sov"><span>U6-U7</span></div></div>
     <div class="slide"><img src="assets/photos/vie-du-club/U8-U9_10.JPEG" alt="U8-U9" loading="lazy"><div class="sov"><span>U8-U9</span></div></div>
     <div class="slide"><img src="assets/photos/vie-du-club/U8-U9_12.JPEG" alt="U8-U9" loading="lazy"><div class="sov"><span>U8-U9</span></div></div>
-
-    <!-- ➕ POUR AJOUTER UNE PHOTO : copie ce bloc et change le nom du fichier
-    <div class="slide"><img src="assets/photos/TON_FICHIER.JPEG" alt="Description"><div class="sov"><span>Légende</span></div></div>
-    -->
+    <div class="slide"><img src="assets/photos/vie-du-club/U10-U11_13.JPEG" alt="U10-U11" loading="lazy"><div class="sov"><span>U10-U11</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/U12-U13_14.JPEG" alt="U12-U13" loading="lazy"><div class="sov"><span>U12-U13</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/U15.jpg" alt="U15" loading="lazy"><div class="sov"><span>U15</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/V2.jpg" alt="Vétérans" loading="lazy"><div class="sov"><span>Vétérans</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/fete.jpeg" alt="Fête du club" loading="lazy"><div class="sov"><span>Fête du club</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/fete1.jpeg" alt="Fête du club" loading="lazy"><div class="sov"><span>Fête du club</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/manger.jpeg" alt="Repas du club" loading="lazy"><div class="sov"><span>Repas du club</span></div></div>
+    <div class="slide"><img src="assets/photos/vie-du-club/manger1.jpeg" alt="Repas du club" loading="lazy"><div class="sov"><span>Repas du club</span></div></div>
 
   </div></div>
   <div class="dots" id="dots"></div>
@@ -241,14 +262,14 @@ footer p{color:var(--d);font-size:.73rem;}
   <div class="stit">Catégories</div>
   <div class="cgrid">
     <a href="u6u7.html"    class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">U6-U7</div><div class="cname">Baby Foot</div></div><div class="cicon">⚽</div></a>
-    <a href="u8u9.html"    class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">U8-U9</div><div class="cname">École de Foot</div></div><div class="cicon">🏃</div></a>
-    <a href="u10u11.html"  class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">U10-U11</div><div class="cname">École de Foot</div></div><div class="cicon">⭐</div></a>
-    <a href="u12u13.html"  class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">U12-U13</div><div class="cname">Poussins</div></div><div class="cicon">🏅</div></a>
-    <a href="u14u15.html"  class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">U14-U15</div><div class="cname">Benjamins</div></div><div class="cicon">🎯</div></a>
+    <a href="u8u9.html"    class="cc rev"><div class="cbg"><img src="assets/photos/categories/U8U9/U8-U9.jpg" alt="" loading="lazy"></div><div class="ci"><div class="cage">U8-U9</div><div class="cname">École de Foot</div></div><div class="cicon">🏃</div></a>
+    <a href="u10u11.html"  class="cc rev"><div class="cbg"><img src="assets/photos/categories/U10U11/U10-U11.jpg" alt="" loading="lazy"></div><div class="ci"><div class="cage">U10-U11</div><div class="cname">École de Foot</div></div><div class="cicon">⭐</div></a>
+    <a href="u12u13.html"  class="cc rev"><div class="cbg"><img src="assets/photos/categories/U12U13/U13.jpg" alt="" loading="lazy"></div><div class="ci"><div class="cage">U12-U13</div><div class="cname">Poussins</div></div><div class="cicon">🏅</div></a>
+    <a href="u14u15.html"  class="cc rev"><div class="cbg"><img src="assets/photos/categories/U14U15/U14-U15.jpg" alt="" loading="lazy"></div><div class="ci"><div class="cage">U14-U15</div><div class="cname">Benjamins</div></div><div class="cicon">🎯</div></a>
     <a href="u16u17.html"  class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">U16-U17</div><div class="cname">Minimes</div></div><div class="cicon">🔥</div></a>
     <a href="u18u19.html"  class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">U18-U19</div><div class="cname">Cadets</div></div><div class="cicon">💪</div></a>
-    <a href="seniors.html" class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">Seniors</div><div class="cname">Équipe 1ère</div></div><div class="cicon">🏆</div></a>
-    <a href="veterans.html"class="cc rev"><div class="cbg"></div><div class="ci"><div class="cage">Vétérans</div><div class="cname">Les Anciens</div></div><div class="cicon">🌟</div></a>
+    <a href="seniors.html" class="cc rev"><div class="cbg"><img src="assets/photos/categories/Seniors/Senior.jpg" alt="" loading="lazy"></div><div class="ci"><div class="cage">Seniors</div><div class="cname">Équipe 1ère</div></div><div class="cicon">🏆</div></a>
+    <a href="veterans.html"class="cc rev"><div class="cbg"><img src="assets/photos/categories/Veterants/V1.jpg" alt="" loading="lazy"></div><div class="ci"><div class="cage">Vétérans</div><div class="cname">Les Anciens</div></div><div class="cicon">🌟</div></a>
   </div>
 </div>
 
@@ -293,6 +314,12 @@ footer p{color:var(--d);font-size:.73rem;}
     <a href="seniors.html">Seniors</a>
   </div>
   <p>&copy; 2026 USSG — Tous droits réservés</p>
+  <!-- ─── Liens légaux — modifiez si nécessaire ─── -->
+  <div class="flegal">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="cgu.html">CGU</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
 </footer>
 
 <button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Haut de page">↑</button>
@@ -303,16 +330,16 @@ let c=0,ti;
 const sl=document.querySelectorAll('.slide'),tr=document.getElementById('tr'),dt=document.getElementById('dots');
 const vis=()=>window.innerWidth<=640?1:3;
 sl.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.onclick=()=>go(i);dt.appendChild(d);});
-function go(i){const m=sl.length-vis();c=Math.max(0,Math.min(i,m));tr.style.transform=`translateX(-${c*(sl[0].offsetWidth+12)}px)`;dt.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===c));}
+function go(i){const m=sl.length-vis();c=Math.max(0,Math.min(i,m));tr.style.transform=`translateX(-${c*(sl[0].offsetWidth+12)}px)`;dt.querySelectorAll('.dot').forEach((d,j)=>{if(j===c){d.classList.remove('on');void d.offsetWidth;/* relance l'animation */d.classList.add('on');}else d.classList.remove('on');});}
 function nx(){go(c>=sl.length-vis()?0:c+1);}
 function pv(){go(c<=0?sl.length-vis():c-1);}
-document.getElementById('cp').onclick=()=>{clearInterval(ti);pv();ti=setInterval(nx,3500);};
-document.getElementById('cn').onclick=()=>{clearInterval(ti);nx();ti=setInterval(nx,3500);};
+document.getElementById('cp').onclick=()=>{clearInterval(ti);pv();ti=setInterval(nx,3000);};
+document.getElementById('cn').onclick=()=>{clearInterval(ti);nx();ti=setInterval(nx,3000);};
 let tx=0;
 tr.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
-tr.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){clearInterval(ti);dx<0?nx():pv();ti=setInterval(nx,3500);}});
+tr.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40){clearInterval(ti);dx<0?nx():pv();ti=setInterval(nx,3000);}});
 window.addEventListener('resize',()=>go(c));
-ti=setInterval(nx,3500);
+ti=setInterval(nx,3000);
 
 // ── Mobile Menu ──
 function toggleMob(){const m=document.getElementById('mnav'),b=document.getElementById('hmenu');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
