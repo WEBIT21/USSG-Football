@@ -8,10 +8,11 @@
 <title>USSG — Le Club</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--blue:#1B4FCC;--bl:#4D7EE8;--bd:#0F2E7A;--bp:#081A50;--k:#0a0a0a;--k2:#111;--k3:#1a1a1a;--w:#F4F4F0;--d:rgba(244,244,240,.42);}
+:root{--blue:#1B4FCC;--bl:#4D7EE8;--bd:#0F2E7A;--bp:#0d1a4a;--k:#0a0f1e;--k2:#0d1428;--k3:#121e36;--w:#F4F4F0;--d:rgba(244,244,240,.42);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:"Barlow",sans-serif;background:var(--k2);color:var(--w);overflow-x:hidden;}
+/* ─── FOND GLOBAL : dégradé sombre + texture géométrique ─── */
+body{font-family:"Barlow",sans-serif;background:repeating-linear-gradient(-55deg,transparent 0,transparent 80px,rgba(27,79,204,.04) 80px,rgba(27,79,204,.04) 82px),linear-gradient(160deg,#0a0f1e 0%,#0f1a3e 100%) fixed;background-attachment:fixed;color:var(--w);overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 
 /* ─── EN-TÊTE ─── */
@@ -61,10 +62,15 @@ nav a.on{color:var(--w);background:var(--bd);}
 .stit{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:2px;margin-bottom:24px;}
 
 /* ─── MOT DU PRÉSIDENT ─── */
-/* Pour ajouter une vraie photo : remplacez .pres-photo par <img src="assets/photos/president.jpg"> */
 .president{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;}
-.pres-photo{width:150px;height:190px;flex-shrink:0;background:var(--k3);border:2px solid var(--blue);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--d);font-size:.72rem;text-align:center;padding:10px;}
-.pres-photo span:first-child{font-size:2.8rem;}
+/* ─── PHOTO PRÉSIDENT (ronde, encadrée) ─── */
+/* Pour changer la photo : remplacez assets/photos/staff/president.jpg par votre fichier */
+.pres-photo-col{flex-shrink:0;text-align:center;width:160px;}
+/* Photo circulaire avec bordure bleue */
+.pres-img{width:130px;height:130px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue);box-shadow:0 0 0 5px rgba(27,79,204,.2);display:block;margin:0 auto;}
+/* Nom et titre sous la photo */
+.pres-name-tag{font-weight:700;font-size:.9rem;color:var(--w);margin-top:12px;}
+.pres-title-tag{font-size:.7rem;color:var(--bl);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
 .pres-text h3{font-family:"Bebas Neue",sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--bl);margin-bottom:3px;}
 .pres-role{font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--d);margin-bottom:14px;}
 .pres-text p{font-size:.9rem;line-height:1.75;color:var(--d);margin-bottom:10px;}
@@ -136,7 +142,8 @@ footer p{color:var(--d);font-size:.73rem;}
 </div>
 
 <header>
-  <div class="logo"><svg class="ls"><use href="#sh"/></svg><div class="ln">USSG <em>FC</em></div></div>
+  <!-- Logo — clic pour revenir à l'accueil -->
+  <a href="index.html" class="logo"><svg class="ls"><use href="#sh"/></svg><div class="ln">USSG <em>FC</em></div></a>
   <nav>
     <a href="index.html" class="bk">← Accueil</a>
     <a href="le-club.html" class="on">Le Club</a>
@@ -145,10 +152,10 @@ footer p{color:var(--d);font-size:.73rem;}
     <a href="seniors.html">Seniors</a>
     <a href="veterans.html">Vétérans</a>
   </nav>
-  <!-- Réseaux sociaux — remplacez href="#" par vos URLs réelles -->
+  <!-- Liens vers les réseaux sociaux officiels du club -->
   <div class="socials">
-    <a href="#" target="_blank" rel="noopener" aria-label="Facebook USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-    <a href="#" target="_blank" rel="noopener" aria-label="Instagram USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+    <a href="https://facebook.com/ussg.foot" target="_blank" rel="noopener" aria-label="Facebook USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="https://instagram.com/ussg60730" target="_blank" rel="noopener" aria-label="Instagram USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
   </div>
   <button class="hmenu" id="hmenu" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
@@ -166,10 +173,14 @@ footer p{color:var(--d);font-size:.73rem;}
   <div class="slbl">Message</div>
   <div class="stit">Mot du Président</div>
   <div class="president rev">
-    <!-- Photo : remplacez ce bloc par <img src="assets/photos/president.jpg" alt="Président" style="width:150px;height:190px;object-fit:cover;border-radius:8px;border:2px solid var(--blue);"> -->
-    <div class="pres-photo">
-      <span>👤</span>
-      <span>Photo à<br>ajouter</span>
+    <!-- Photo du président — fichier : assets/photos/staff/president.jpg -->
+    <div class="pres-photo-col">
+      <img src="assets/photos/staff/president.jpg" alt="Président USSG" class="pres-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <!-- Icône de remplacement si la photo est absente -->
+      <div style="display:none;width:130px;height:130px;border-radius:50%;background:var(--bp);border:3px solid var(--blue);margin:0 auto;align-items:center;justify-content:center;font-size:2.8rem;">👤</div>
+      <div class="pres-name-tag">Prénom NOM</div>
+      <div class="pres-title-tag">Président du club</div>
     </div>
     <div class="pres-text">
       <h3>Prénom NOM</h3>
@@ -290,7 +301,7 @@ footer p{color:var(--d);font-size:.73rem;}
       <div>
         <div class="contact-label">Email</div>
         <!-- Remplacez par l'email réel du club -->
-        <div class="contact-val"><a href="mailto:contact@ussg-football.fr">contact@ussg-football.fr</a></div>
+        <div class="contact-val"><a href="mailto:ussg60730@gmail.com">ussg60730@gmail.com</a></div>
       </div>
     </div>
     <div class="contact-card rev">
@@ -307,6 +318,17 @@ footer p{color:var(--d);font-size:.73rem;}
         <div class="contact-label">Entraînements</div>
         <!-- Modifiez les jours et horaires -->
         <div class="contact-val">Mercredi &amp; Vendredi<br>18h00 – 20h00</div>
+      </div>
+    </div>
+    <!-- Carte réseaux sociaux du club -->
+    <div class="contact-card rev">
+      <div class="contact-icon">📱</div>
+      <div>
+        <div class="contact-label">Réseaux sociaux</div>
+        <div class="contact-val">
+          <a href="https://facebook.com/ussg.foot" target="_blank" rel="noopener">Facebook USSG</a><br>
+          <a href="https://instagram.com/ussg60730" target="_blank" rel="noopener">Instagram @ussg60730</a>
+        </div>
       </div>
     </div>
   </div>
