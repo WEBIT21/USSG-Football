@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="USSG Football — Actualités. Résultats récents et prochains matchs du club.">
+<meta name="theme-color" content="#0a0a0a">
+<title>USSG — Actualités</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1B4FCC;--bl:#4D7EE8;--bd:#0F2E7A;--bp:#081A50;--k:#0a0a0a;--k2:#111;--k3:#1a1a1a;--w:#F4F4F0;--d:rgba(244,244,240,.42);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:"Barlow",sans-serif;background:var(--k2);color:var(--w);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+/* ─── EN-TÊTE ─── */
+header{position:sticky;top:0;z-index:200;background:var(--k);border-bottom:2px solid var(--blue);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.ls{width:32px;height:38px;}
+.ln{font-family:"Bebas Neue",sans-serif;font-size:1.45rem;letter-spacing:3px;}
+.ln em{font-style:normal;color:var(--bl);font-family:"Barlow",sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2px;margin-left:5px;}
+nav{display:flex;gap:2px;}
+nav a{padding:5px 9px;border-radius:3px;font-size:.72rem;font-weight:700;color:var(--d);transition:all .15s;white-space:nowrap;}
+nav a:hover{color:var(--w);background:var(--k3);}
+nav a.bk{background:var(--blue);color:var(--w);}
+nav a.on{color:var(--w);background:var(--bd);}
+
+/* ─── HAMBURGER ─── */
+.hmenu{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:201;}
+.hmenu span{display:block;width:22px;height:2px;background:var(--w);border-radius:2px;transition:all .25s;}
+.hmenu.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hmenu.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hmenu.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:900px){nav{display:none;}.hmenu{display:flex;}}
+
+/* ─── MENU MOBILE ─── */
+.mnav{display:none;position:fixed;inset:0;z-index:199;background:rgba(5,8,20,.97);flex-direction:column;align-items:center;justify-content:center;gap:6px;backdrop-filter:blur(8px);}
+.mnav.open{display:flex;}
+.mnav a{font-family:"Bebas Neue",sans-serif;font-size:2.4rem;letter-spacing:4px;color:var(--w);padding:10px 24px;border-radius:4px;transition:color .15s,background .15s;width:220px;text-align:center;}
+.mnav a:hover{color:var(--bl);background:rgba(27,79,204,.1);}
+.mnav-close{position:absolute;top:22px;right:24px;background:none;border:none;font-size:1.6rem;color:var(--d);cursor:pointer;line-height:1;}
+
+/* ─── RÉSEAUX SOCIAUX ─── */
+.socials{display:flex;gap:4px;align-items:center;}
+.soc-link{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:4px;color:var(--d);transition:color .15s,background .15s;}
+.soc-link:hover{color:var(--bl);background:rgba(27,79,204,.12);}
+@media(max-width:900px){.socials{display:none;}}
+
+/* ─── HÉRO ─── */
+.ph{padding:40px 36px;background:var(--k);border-bottom:2px solid var(--blue);}
+.slbl{font-size:.62rem;font-weight:700;letter-spacing:5px;color:var(--bl);text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.slbl::before{content:"";width:16px;height:2px;background:var(--bl);}
+.ph h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:3px;line-height:.9;}
+.ahl{color:var(--bl);}
+.ph p{margin-top:8px;color:var(--d);font-size:.86rem;}
+
+/* ─── SECTIONS ─── */
+.sec{padding:36px;}
+.sec.alt{background:var(--k);}
+.stit{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:2px;margin-bottom:20px;}
+
+/* ─── TABLEAU RÉSULTATS ─── */
+/* Pour ajouter un résultat : copiez un <tr> dans le <tbody> */
+.res-table{width:100%;border-collapse:collapse;font-size:.85rem;}
+.res-table th{font-size:.63rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--d);padding:8px 12px;text-align:left;border-bottom:2px solid #1e1e1e;}
+.res-table td{padding:11px 12px;border-bottom:1px solid #1a1a1a;vertical-align:middle;}
+.res-table tr:last-child td{border-bottom:none;}
+.res-table tr:hover td{background:rgba(27,79,204,.05);}
+/* Badges V/N/D — ne pas modifier les noms de classes */
+.badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:.63rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.badge.v{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.25);}
+.badge.n{background:rgba(234,179,8,.1);color:#fbbf24;border:1px solid rgba(234,179,8,.22);}
+.badge.d{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.22);}
+.score{font-family:"Bebas Neue",sans-serif;font-size:1.1rem;letter-spacing:2px;color:var(--w);}
+.cat-tag{font-size:.63rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--bl);}
+
+/* ─── CARTES PROCHAINS MATCHS ─── */
+/* Pour ajouter un match : copiez un bloc .match-card */
+.match-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px;}
+.match-card{background:var(--k3);border:1px solid #1e1e1e;border-radius:8px;padding:18px 16px;display:flex;flex-direction:column;gap:9px;transition:border-color .2s;}
+.match-card:hover{border-color:var(--blue);}
+.match-date{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bl);}
+.match-teams{font-family:"Bebas Neue",sans-serif;font-size:1.2rem;letter-spacing:1px;line-height:1.25;}
+.match-vs{color:var(--d);font-size:.9rem;}
+.match-info{display:flex;gap:12px;font-size:.75rem;color:var(--d);flex-wrap:wrap;}
+
+/* ─── ANIMATION ─── */
+.rev{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.rev.vis{opacity:1;transform:none;}
+
+/* ─── BOUTON RETOUR EN HAUT ─── */
+#top{position:fixed;bottom:28px;right:28px;width:42px;height:42px;background:var(--blue);border:none;border-radius:50%;color:var(--w);font-size:1.1rem;cursor:pointer;z-index:300;opacity:0;pointer-events:none;transition:opacity .25s,background .18s;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(27,79,204,.4);}
+#top.vis{opacity:1;pointer-events:auto;}
+#top:hover{background:var(--bl);}
+
+/* ─── PIED DE PAGE ─── */
+footer{background:var(--k);border-top:2px solid var(--blue);padding:22px 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.fl{display:flex;align-items:center;gap:9px;}
+.fs{width:26px;height:30px;}
+.fn{font-family:"Bebas Neue",sans-serif;font-size:1rem;letter-spacing:2px;color:rgba(244,244,240,.45);}
+.flinks{display:flex;gap:16px;}
+.flinks a{font-size:.7rem;font-weight:600;color:var(--d);transition:color .15s;}
+.flinks a:hover{color:var(--bl);}
+footer p{color:var(--d);font-size:.73rem;}
+@media(max-width:600px){.ph,.sec{padding-left:18px;padding-right:18px;}footer{padding:16px 18px;}.flinks{display:none;}}
+</style>
+</head>
+<body>
+
+<svg style="display:none"><symbol id="sh" viewBox="0 0 100 115" fill="none"><path d="M50 3 L95 20 L95 62 Q95 95 50 112 Q5 95 5 62 L5 20 Z" fill="#0a0a0a" stroke="#1B4FCC" stroke-width="3.5"/><rect x="5" y="42" width="90" height="28" fill="#1B4FCC"/><text x="50" y="63" font-family="Bebas Neue,Arial Black,sans-serif" font-size="19" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">USSG</text></symbol></svg>
+
+<!-- Menu mobile -->
+<div class="mnav" id="mnav">
+  <button class="mnav-close" onclick="closeMob()">✕</button>
+  <a href="index.html" onclick="closeMob()">Accueil</a>
+  <a href="le-club.html" onclick="closeMob()">Le Club</a>
+  <a href="actualites.html" onclick="closeMob()">Actualités</a>
+  <a href="index.html#cats" onclick="closeMob()">Catégories</a>
+  <a href="seniors.html" onclick="closeMob()">Seniors</a>
+  <a href="veterans.html" onclick="closeMob()">Vétérans</a>
+</div>
+
+<header>
+  <div class="logo"><svg class="ls"><use href="#sh"/></svg><div class="ln">USSG <em>FC</em></div></div>
+  <nav>
+    <a href="index.html" class="bk">← Accueil</a>
+    <a href="le-club.html">Le Club</a>
+    <a href="actualites.html" class="on">Actualités</a>
+    <a href="index.html#cats">Catégories</a>
+    <a href="seniors.html">Seniors</a>
+    <a href="veterans.html">Vétérans</a>
+  </nav>
+  <!-- Réseaux sociaux — remplacez href="#" par vos URLs réelles -->
+  <div class="socials">
+    <a href="#" target="_blank" rel="noopener" aria-label="Facebook USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    <a href="#" target="_blank" rel="noopener" aria-label="Instagram USSG" class="soc-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+  <button class="hmenu" id="hmenu" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="ph">
+  <div class="slbl">USSG Football</div>
+  <h1><span class="ahl">Actu</span>alités</h1>
+  <p>Résultats récents et prochains matchs du club.</p>
+</div>
+
+<!-- ═══ RÉSULTATS RÉCENTS ═══════════════════════════════════ -->
+<!-- Pour ajouter un résultat : copiez un <tr> dans le <tbody> et modifiez-le -->
+<!-- Badges disponibles : badge v (Victoire), badge n (Nul), badge d (Défaite) -->
+<div class="sec" id="resultats">
+  <div class="slbl">Derniers matchs</div>
+  <div class="stit rev">Résultats Récents</div>
+  <div style="overflow-x:auto;">
+    <table class="res-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Catégorie</th>
+          <th>Match</th>
+          <th>Score</th>
+          <th>Résultat</th>
+          <th>Lieu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Ligne exemple — copiez ce bloc pour ajouter un résultat -->
+        <tr>
+          <td>22/03/2026</td>
+          <td><span class="cat-tag">Seniors</span></td>
+          <td>USSG FC — Adversaire FC</td>
+          <td><span class="score">2-1</span></td>
+          <td><span class="badge v">Victoire</span></td>
+          <td>🏠 Domicile</td>
+        </tr>
+        <tr>
+          <td>20/03/2026</td>
+          <td><span class="cat-tag">U14-U15</span></td>
+          <td>USSG FC — Équipe Adverse</td>
+          <td><span class="score">1-1</span></td>
+          <td><span class="badge n">Nul</span></td>
+          <td>✈️ Extérieur</td>
+        </tr>
+        <tr>
+          <td>15/03/2026</td>
+          <td><span class="cat-tag">Vétérans</span></td>
+          <td>USSG FC — Club Opposé</td>
+          <td><span class="score">3-0</span></td>
+          <td><span class="badge v">Victoire</span></td>
+          <td>🏠 Domicile</td>
+        </tr>
+        <tr>
+          <td>14/03/2026</td>
+          <td><span class="cat-tag">U12-U13</span></td>
+          <td>USSG FC — FC Adversaire</td>
+          <td><span class="score">0-2</span></td>
+          <td><span class="badge d">Défaite</span></td>
+          <td>✈️ Extérieur</td>
+        </tr>
+        <tr>
+          <td>08/03/2026</td>
+          <td><span class="cat-tag">U16-U17</span></td>
+          <td>USSG FC — Sporting Club</td>
+          <td><span class="score">4-1</span></td>
+          <td><span class="badge v">Victoire</span></td>
+          <td>🏠 Domicile</td>
+        </tr>
+        <tr>
+          <td>07/03/2026</td>
+          <td><span class="cat-tag">Seniors</span></td>
+          <td>USSG FC — AS Rivale</td>
+          <td><span class="score">1-2</span></td>
+          <td><span class="badge d">Défaite</span></td>
+          <td>✈️ Extérieur</td>
+        </tr>
+        <!-- Ajoutez vos résultats ici -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ PROCHAINS MATCHS ════════════════════════════════════ -->
+<!-- Pour ajouter un match : copiez un bloc .match-card et modifiez le contenu -->
+<div class="sec alt" id="agenda">
+  <div class="slbl">Agenda</div>
+  <div class="stit rev">Prochains Matchs</div>
+  <div class="match-grid">
+    <div class="match-card rev">
+      <div class="match-date">Samedi 28 mars 2026</div>
+      <div class="match-teams">USSG FC <span class="match-vs">vs</span> Adversaire FC</div>
+      <div class="cat-tag">Seniors</div>
+      <div class="match-info">
+        <span>🏠 Domicile</span>
+        <span>⏰ 15h00</span>
+        <span>📍 Stade Municipal</span>
+      </div>
+    </div>
+    <div class="match-card rev">
+      <div class="match-date">Dimanche 29 mars 2026</div>
+      <div class="match-teams">USSG FC <span class="match-vs">vs</span> FC Rival</div>
+      <div class="cat-tag">U14-U15</div>
+      <div class="match-info">
+        <span>✈️ Extérieur</span>
+        <span>⏰ 10h30</span>
+        <span>📍 Terrain Adverse</span>
+      </div>
+    </div>
+    <div class="match-card rev">
+      <div class="match-date">Samedi 4 avril 2026</div>
+      <div class="match-teams">USSG FC <span class="match-vs">vs</span> Club United</div>
+      <div class="cat-tag">Vétérans</div>
+      <div class="match-info">
+        <span>🏠 Domicile</span>
+        <span>⏰ 14h00</span>
+        <span>📍 Stade Municipal</span>
+      </div>
+    </div>
+    <div class="match-card rev">
+      <div class="match-date">Samedi 4 avril 2026</div>
+      <div class="match-teams">USSG FC <span class="match-vs">vs</span> AS Voisine</div>
+      <div class="cat-tag">U16-U17</div>
+      <div class="match-info">
+        <span>🏠 Domicile</span>
+        <span>⏰ 10h00</span>
+        <span>📍 Stade Municipal</span>
+      </div>
+    </div>
+    <div class="match-card rev">
+      <div class="match-date">Dimanche 5 avril 2026</div>
+      <div class="match-teams">USSG FC <span class="match-vs">vs</span> Racing Club</div>
+      <div class="cat-tag">Seniors</div>
+      <div class="match-info">
+        <span>✈️ Extérieur</span>
+        <span>⏰ 15h00</span>
+        <span>📍 Terrain Racing</span>
+      </div>
+    </div>
+    <div class="match-card rev">
+      <div class="match-date">Mercredi 8 avril 2026</div>
+      <div class="match-teams">USSG FC <span class="match-vs">vs</span> Entente Sportive</div>
+      <div class="cat-tag">U12-U13</div>
+      <div class="match-info">
+        <span>🏠 Domicile</span>
+        <span>⏰ 18h00</span>
+        <span>📍 Stade Municipal</span>
+      </div>
+    </div>
+    <!-- Ajoutez vos prochains matchs ici -->
+  </div>
+</div>
+
+<!-- Pied de page -->
+<footer>
+  <div class="fl"><svg class="fs"><use href="#sh"/></svg><span class="fn">USSG Football</span></div>
+  <div class="flinks">
+    <a href="le-club.html">Le Club</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="index.html#cats">Catégories</a>
+    <a href="seniors.html">Seniors</a>
+  </div>
+  <p>&copy; 2026 USSG — Tous droits réservés</p>
+</footer>
+
+<button id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Haut de page">↑</button>
+
+<script>
+// ── Menu mobile ──
+function toggleMob(){const m=document.getElementById("mnav"),b=document.getElementById("hmenu");m.classList.toggle("open");b.classList.toggle("open");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
+function closeMob(){document.getElementById("mnav").classList.remove("open");document.getElementById("hmenu").classList.remove("open");document.body.style.overflow="";}
+
+// ── Animation au défilement ──
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("vis");});},{threshold:.08});
+document.querySelectorAll(".rev").forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.08+"s";obs.observe(el);});
+
+// ── Bouton retour en haut ──
+window.addEventListener("scroll",()=>{document.getElementById("top").classList.toggle("vis",window.scrollY>300);},{passive:true});
+</script>
+</body>
+</html>
